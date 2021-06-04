@@ -1,0 +1,384 @@
+{
+	"info": {
+		"_postman_id": "7398f766-2778-4d68-9928-2797d8d20a71",
+		"name": "Postman collection for RestAPI  - Laravel Project",
+		"description": "To edit a Task:\n- Set POST method in Postman with PUT param method like => https://laravel-api.local/api/tasks/13?_method=PUT\n- So that we can get all the properties from 'form-data'\n- If we edit without image and files, then we can set POST method and send a json object.\n\nTo delete a Task:\n- Set a param like => https://laravel-api.local/api/tasks/13?d=hard      - for hard deletion.\n- Do not a param, just like => https://laravel-api.local/api/tasks/13    - for soft deletion\n\n\nNote: I had to disable the Postman SSL Verification, to make requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Moises Borracha\",\n    \"email\": \"moisesnt2@gmail.com\",\n    \"password\": \"moises\",\n    \"password_confirmation\": \"moises\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://laravel-api.local/api/auth/register",
+					"protocol": "https",
+					"host": [
+						"laravel-api",
+						"local"
+					],
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				},
+				"description": "https://laravel-api.local/api/auth/register\n\n/api/auth/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"moisesnt2@gmail.com\",\n    \"password\": \"moises\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://laravel-api.local/api/auth/login",
+					"protocol": "https",
+					"host": [
+						"laravel-api",
+						"local"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get - Tasks",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGFyYXZlbC1hcGkubG9jYWxcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2MjI4MTU4MTEsImV4cCI6MTYyMjkwMjIxMSwibmJmIjoxNjIyODE1ODExLCJqdGkiOiJNeG5oSVRwMnVxaURZTTRuIiwic3ViIjoxMiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.q3LqHY-3Ho4KGlHG1BkUnXSAqKjs6-3CuO_hJ9U2EKI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://laravel-api.local/api/tasks",
+					"protocol": "https",
+					"host": [
+						"laravel-api",
+						"local"
+					],
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create - Task",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGFyYXZlbC1hcGkubG9jYWxcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2MjI4MTU4MTEsImV4cCI6MTYyMjkwMjIxMSwibmJmIjoxNjIyODE1ODExLCJqdGkiOiJNeG5oSVRwMnVxaURZTTRuIiwic3ViIjoxMiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.q3LqHY-3Ho4KGlHG1BkUnXSAqKjs6-3CuO_hJ9U2EKI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Make a laravel project",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Make a laravel project with JWT, and resources routes",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "pending",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/blackbeard/Desktop/Screenshot copy.png"
+						},
+						{
+							"key": "files[]",
+							"type": "file",
+							"src": "/Users/blackbeard/Documents/PROJETO FINAL DE CC1 UNIVERSIDADE CATÓLICA DE ANGOLA.pdf"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://laravel-api.local/api/tasks",
+					"protocol": "https",
+					"host": [
+						"laravel-api",
+						"local"
+					],
+					"path": [
+						"api",
+						"tasks"
+					]
+				},
+				"description": "- Only one image is allowed.\n- Multiple files allowed."
+			},
+			"response": []
+		},
+		{
+			"name": "Edit - Task",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGFyYXZlbC1hcGkubG9jYWxcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2MjI4MTU4MTEsImV4cCI6MTYyMjkwMjIxMSwibmJmIjoxNjIyODE1ODExLCJqdGkiOiJNeG5oSVRwMnVxaURZTTRuIiwic3ViIjoxMiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.q3LqHY-3Ho4KGlHG1BkUnXSAqKjs6-3CuO_hJ9U2EKI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Suquila changed the title",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Make a laravel project with JWT, soft and hard deletion",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "done",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/blackbeard/Desktop/Screenshot.png"
+						},
+						{
+							"key": "files[]",
+							"type": "file",
+							"src": "/Users/blackbeard/Documents/ITDAA3-B22 – Project Block 2 2021 (V1.0).pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://laravel-api.local/api/tasks/15?_method=PUT",
+					"protocol": "https",
+					"host": [
+						"laravel-api",
+						"local"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"15"
+					],
+					"query": [
+						{
+							"key": "_method",
+							"value": "PUT"
+						}
+					]
+				},
+				"description": "To edit a Task:\n- Set POST method in Postman with PUT param method like => https://laravel-api.local/api/tasks/13?_method=PUT\n- So that we can get all the properties from 'form-data'\n- If we edit without image and files, then we can set POST method without this param and send a json object."
+			},
+			"response": []
+		},
+		{
+			"name": "Soft - Deletion",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGFyYXZlbC1hcGkubG9jYWxcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2MjI4MTU4MTEsImV4cCI6MTYyMjkwMjIxMSwibmJmIjoxNjIyODE1ODExLCJqdGkiOiJNeG5oSVRwMnVxaURZTTRuIiwic3ViIjoxMiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.q3LqHY-3Ho4KGlHG1BkUnXSAqKjs6-3CuO_hJ9U2EKI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://laravel-api.local/api/tasks/16",
+					"protocol": "https",
+					"host": [
+						"laravel-api",
+						"local"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hard - Deletion",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGFyYXZlbC1hcGkubG9jYWxcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2MjI4MTU4MTEsImV4cCI6MTYyMjkwMjIxMSwibmJmIjoxNjIyODE1ODExLCJqdGkiOiJNeG5oSVRwMnVxaURZTTRuIiwic3ViIjoxMiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.q3LqHY-3Ho4KGlHG1BkUnXSAqKjs6-3CuO_hJ9U2EKI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://laravel-api.local/api/tasks/17?d=hard ",
+					"protocol": "https",
+					"host": [
+						"laravel-api",
+						"local"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"17"
+					],
+					"query": [
+						{
+							"key": "d",
+							"value": "hard "
+						}
+					]
+				},
+				"description": "We have to provide a param to perform this action, just like:    ?d=hard \n\nhttps://laravel-api.local/api/tasks/16?d=hard"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "0f07bb84-392e-4091-8c1f-6ad534821fbc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "cd52cd24-195f-4184-b231-299435b58707",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
